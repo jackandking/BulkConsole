@@ -15,6 +15,7 @@ class ToolsController < ApplicationController
   # GET /tools/new
   def new
     @tool = Tool.new
+    @p_array = [''] + Configure.column_names.grep(/\d/)
   end
 
   # GET /tools/1/edit
