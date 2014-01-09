@@ -1,5 +1,6 @@
 class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :edit, :update, :destroy]
+  before_action :get_array, only: [:new, :edit, :update, :destroy]
 
   # GET /tools
   # GET /tools.json
@@ -15,7 +16,6 @@ class ToolsController < ApplicationController
   # GET /tools/new
   def new
     @tool = Tool.new
-    @p_array = [''] + Configure.column_names.grep(/\d/)
   end
 
   # GET /tools/1/edit
@@ -70,6 +70,10 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :desc, :cmd, :p1, :p1_desc, :p2, :p2_desc, :p3, :p3_desc, :p4, :p4_desc)
+      params.require(:tool).permit(:name, :desc, :cmd, :p1, :p1_desc, :p2, :p2_desc, :p3, :p3_desc, :p4, :p4_desc, :o1, :o1_desc, :o2, :o2_desc, :o3, :o3_desc, :o4, :o4_desc)
+    end
+    def get_array
+      @p_array = [''] + Configure.column_names.grep(/(s|if)\d/)
+      @o_array = [''] + Configure.column_names.grep(/of\d/)
     end
 end

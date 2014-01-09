@@ -18,7 +18,7 @@ class ConfiguresControllerTest < ActionController::TestCase
 
   test "should create configure" do
     assert_difference('Configure.count') do
-      post :create, configure: { f1: @configure.f1, f2: @configure.f2, f3: @configure.f3, f4: @configure.f4, s1: @configure.s1, s2: @configure.s2, s3: @configure.s3, s4: @configure.s4, task_id: @configure.task_id }
+      post :create, configure: { if1: @configure.if1, if2: @configure.if2, if3: @configure.if3, if4: @configure.if4, s1: @configure.s1, s2: @configure.s2, s3: @configure.s3, s4: @configure.s4, task_id: @configure.task_id }
     end
 
     assert_redirected_to configure_path(assigns(:configure))
@@ -35,7 +35,7 @@ class ConfiguresControllerTest < ActionController::TestCase
   end
 
   test "should update configure" do
-    patch :update, id: @configure, configure: { f1: @configure.f1, f2: @configure.f2, f3: @configure.f3, f4: @configure.f4, s1: @configure.s1, s2: @configure.s2, s3: @configure.s3, s4: @configure.s4, task_id: @configure.task_id }
+    patch :update, id: @configure, configure: { if1: @configure.if1, if2: @configure.if2, if3: @configure.if3, if4: @configure.if4, s1: @configure.s1, s2: @configure.s2, s3: @configure.s3, s4: @configure.s4, task_id: @configure.task_id }
     assert_redirected_to configure_path(assigns(:configure))
   end
 

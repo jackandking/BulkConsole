@@ -23,38 +23,27 @@
     <%= f.label :cmd %><br>
     <%= f.text_field :cmd %>
   </div>
+  <% Tool.column_names.grep(/p\d$/).each do |c| %>
   <div class="field">
-    <%= f.label :p1 %><br>
-    <%= f.select :p1, :value => @p_array %>
+    <%= f.label c %><br>
+    <%= f.select c, :value => @p_array %>
   </div>
   <div class="field">
-    <%= f.label :p1_desc %><br>
-    <%= f.text_field :p1_desc %>
+    <%= f.label c+"_desc" %><br>
+    <%= f.text_field c+"_desc" %>
+  </div>
+  <% end %>
+  <% Tool.column_names.grep(/o\d$/).each do |c| %>
+  <div class="field">
+    <%= f.label c %><br>
+    <%= f.select c, :value => @o_array %>
   </div>
   <div class="field">
-    <%= f.label :p2 %><br>
-    <%= f.text_field :p2 %>
+    <%= f.label c+"_desc" %><br>
+    <%= f.text_field c+"_desc" %>
   </div>
-  <div class="field">
-    <%= f.label :p2_desc %><br>
-    <%= f.text_field :p2_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :p3 %><br>
-    <%= f.text_field :p3 %>
-  </div>
-  <div class="field">
-    <%= f.label :p3_desc %><br>
-    <%= f.text_field :p3_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :p4 %><br>
-    <%= f.text_field :p4 %>
-  </div>
-  <div class="field">
-    <%= f.label :p4_desc %><br>
-    <%= f.text_field :p4_desc %>
-  </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

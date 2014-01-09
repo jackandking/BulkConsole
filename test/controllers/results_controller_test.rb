@@ -18,7 +18,7 @@ class ResultsControllerTest < ActionController::TestCase
 
   test "should create result" do
     assert_difference('Result.count') do
-      post :create, result: { errfile: @result.errfile, logfile: @result.logfile, return: @result.return, stdout: @result.stdout, task_id: @result.task_id }
+      post :create, result: { of1: @result.of1, of2: @result.of2, of3: @result.of3, of4: @result.of4, return: @result.return, stdout: @result.stdout, task_id: @result.task_id }
     end
 
     assert_redirected_to result_path(assigns(:result))
@@ -35,7 +35,7 @@ class ResultsControllerTest < ActionController::TestCase
   end
 
   test "should update result" do
-    patch :update, id: @result, result: { errfile: @result.errfile, logfile: @result.logfile, return: @result.return, stdout: @result.stdout, task_id: @result.task_id }
+    patch :update, id: @result, result: { of1: @result.of1, of2: @result.of2, of3: @result.of3, of4: @result.of4, return: @result.return, stdout: @result.stdout, task_id: @result.task_id }
     assert_redirected_to result_path(assigns(:result))
   end
 

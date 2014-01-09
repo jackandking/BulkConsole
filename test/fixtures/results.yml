@@ -4,12 +4,16 @@ one:
   task_id: 1
   return: 1
   stdout: MyString
-  logfile: MyString
-  errfile: MyString
+  of1: MyString
+  of2: MyString
+  of3: MyString
+  of4: MyString
 
 two:
   task_id: 1
   return: 1
   stdout: MyString
-  logfile: MyString
-  errfile: MyString
+  of1: MyString
+  of2: MyString
+  of3: MyString
+  of4: MyString

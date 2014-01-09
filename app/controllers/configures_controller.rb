@@ -15,6 +15,13 @@ class ConfiguresController < ApplicationController
   # GET /configures/new
   def new
     @configure = Configure.new
+    @configure.task_id = params[:task_id]
+    Tool.column_names.grep(/[p|o]\d$/).each do |c|
+      eval("@p = @configure.task.tool."+c)
+      if !@p.empty?
+        eval("@"+@p+"_desc = @configure.task.tool."+c+"_desc")
+      end 
+    end
   end
 
   # GET /configures/1/edit
@@ -25,11 +32,18 @@ class ConfiguresController < ApplicationController
   # POST /configures.json
   def create
     @configure = Configure.new(configure_params)
+    p configure_params
 
     respond_to do |format|
       if @configure.save
-        format.html { redirect_to @configure, notice: 'Configure was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @configure }
+        @configure.task.configure_id = @configure.id
+        if @configure.task.save
+          format.html { redirect_to @configure, notice: 'Configure was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @configure }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @configure.errors, status: :unprocessable_entity }
+        end 
       else
         format.html { render action: 'new' }
         format.json { render json: @configure.errors, status: :unprocessable_entity }
@@ -69,6 +83,6 @@ class ConfiguresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def configure_params
-      params.require(:configure).permit(:task_id, :s1, :s2, :s3, :s4, :f1, :f2, :f3, :f4)
+      params.require(:configure).permit(:task_id, :s1, :s2, :s3, :s4, :if1, :if2, :if3, :if4, :of1, :of2, :of3, :of4)
     end
 end

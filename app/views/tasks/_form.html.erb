@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :owner %><br>
-    <%= f.text_field :owner %>
+    <%= @task.owner %>
   </div>
   <div class="field">
     <%= f.label :desc %><br>
@@ -21,9 +21,9 @@
   </div>
   <div class="field">
     <%= f.label :tool_id %><br>
-    <%= f.number_field :tool_id %>
+    <%= f.select :tool_id, Tool.all.map{|c| [c.name, c.id]} %>
   </div>
-  <div class="field">
+  <!--div class="field">
     <%= f.label :configure_id %><br>
     <%= f.text_field :configure_id %>
   </div>
@@ -34,7 +34,7 @@
   <div class="field">
     <%= f.label :state %><br>
     <%= f.text_field :state %>
-  </div>
+  </div-->
   <div class="actions">
     <%= f.submit %>
   </div>

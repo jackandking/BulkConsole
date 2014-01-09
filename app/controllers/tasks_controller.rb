@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :execute, :destroy]
 
   # GET /tasks
   # GET /tasks.json
@@ -15,6 +15,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @task.owner = "TBD"
   end
 
   # GET /tasks/1/edit
@@ -34,6 +35,27 @@ class TasksController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def execute
+    Configure.column_names.grep(/[s|if]\d/).each do |c|
+      eval("@"+c+" = @task.configure."+c)
+    end
+    p @s1
+    p @if1
+    @cmd = @task.tool.cmd
+    p @cmd
+    @cmd=eval("\""+@cmd+"\"")
+    p @cmd
+    stdout= system(@cmd)
+    @result=Result.new
+    @result.task_id = @task.id
+    @result.stdout= stdout
+    @result.save
+    @task.result_id=@result.id
+    if @task.save
+      format.html { redirect_to @result, notice: 'Task was successfully created.' }
     end
   end
 

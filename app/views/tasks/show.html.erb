@@ -12,7 +12,7 @@
 
 <p>
   <strong>Tool:</strong>
-  <%= @task.tool_id %>
+  <%= @task.tool.name %>
 </p>
 
 <p>
@@ -32,3 +32,4 @@
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
+<%= link_to 'Configure', new_configure_path(:task_id => @task.id) %>

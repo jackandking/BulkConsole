@@ -5,45 +5,17 @@
   <%= @configure.task_id %>
 </p>
 
+<% Configure.column_names.grep(/(s|if|of)\d/).each do |c| %>
+<% p "@configure."+c+".empty?" %>
+<% p eval("@configure."+c+".empty?") if eval("@configure."+c) %>
+<% if eval("@configure."+c) and ! eval("@configure."+c+".empty?") %>
 <p>
-  <strong>S1:</strong>
-  <%= @configure.s1 %>
+  <strong><%= c %>:</strong>
+  <%= eval("@configure."+c) %>
 </p>
-
-<p>
-  <strong>S2:</strong>
-  <%= @configure.s2 %>
-</p>
-
-<p>
-  <strong>S3:</strong>
-  <%= @configure.s3 %>
-</p>
-
-<p>
-  <strong>S4:</strong>
-  <%= @configure.s4 %>
-</p>
-
-<p>
-  <strong>F1:</strong>
-  <%= @configure.f1 %>
-</p>
-
-<p>
-  <strong>F2:</strong>
-  <%= @configure.f2 %>
-</p>
-
-<p>
-  <strong>F3:</strong>
-  <%= @configure.f3 %>
-</p>
-
-<p>
-  <strong>F4:</strong>
-  <%= @configure.f4 %>
-</p>
+<% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_configure_path(@configure) %> |
 <%= link_to 'Back', configures_path %>
+<%= link_to 'execute', :controller => :tasks, :action => :execute, :id => @configure.task_id%>

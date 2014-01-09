@@ -12,6 +12,14 @@ one:
   p3_desc: MyString
   p4: MyString
   p4_desc: MyString
+  o1: MyString
+  o1_desc: MyString
+  o2: MyString
+  o2_desc: MyString
+  o3: MyString
+  o3_desc: MyString
+  o4: MyString
+  o4_desc: MyString
 
 two:
   name: MyString
@@ -25,3 +33,11 @@ two:
   p3_desc: MyString
   p4: MyString
   p4_desc: MyString
+  o1: MyString
+  o1_desc: MyString
+  o2: MyString
+  o2_desc: MyString
+  o3: MyString
+  o3_desc: MyString
+  o4: MyString
+  o4_desc: MyString
