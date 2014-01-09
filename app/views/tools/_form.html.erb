@@ -1,0 +1,61 @@
+<%= form_for(@tool) do |f| %>
+  <% if @tool.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
+
+      <ul>
+      <% @tool.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %><br>
+    <%= f.text_field :desc %>
+  </div>
+  <div class="field">
+    <%= f.label :cmd %><br>
+    <%= f.text_field :cmd %>
+  </div>
+  <div class="field">
+    <%= f.label :p1 %><br>
+    <%= f.text_field :p1 %>
+  </div>
+  <div class="field">
+    <%= f.label :p1_desc %><br>
+    <%= f.text_field :p1_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :p2 %><br>
+    <%= f.text_field :p2 %>
+  </div>
+  <div class="field">
+    <%= f.label :p2_desc %><br>
+    <%= f.text_field :p2_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :p3 %><br>
+    <%= f.text_field :p3 %>
+  </div>
+  <div class="field">
+    <%= f.label :p3_desc %><br>
+    <%= f.text_field :p3_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :p4 %><br>
+    <%= f.text_field :p4 %>
+  </div>
+  <div class="field">
+    <%= f.label :p4_desc %><br>
+    <%= f.text_field :p4_desc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

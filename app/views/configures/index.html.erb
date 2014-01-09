@@ -1,0 +1,43 @@
+<h1>Listing configures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>S1</th>
+      <th>S2</th>
+      <th>S3</th>
+      <th>S4</th>
+      <th>F1</th>
+      <th>F2</th>
+      <th>F3</th>
+      <th>F4</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @configures.each do |configure| %>
+      <tr>
+        <td><%= configure.task_id %></td>
+        <td><%= configure.s1 %></td>
+        <td><%= configure.s2 %></td>
+        <td><%= configure.s3 %></td>
+        <td><%= configure.s4 %></td>
+        <td><%= configure.f1 %></td>
+        <td><%= configure.f2 %></td>
+        <td><%= configure.f3 %></td>
+        <td><%= configure.f4 %></td>
+        <td><%= link_to 'Show', configure %></td>
+        <td><%= link_to 'Edit', edit_configure_path(configure) %></td>
+        <td><%= link_to 'Destroy', configure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Configure', new_configure_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @result.task_id %>
+</p>
+
+<p>
+  <strong>Return:</strong>
+  <%= @result.return %>
+</p>
+
+<p>
+  <strong>Stdout:</strong>
+  <%= @result.stdout %>
+</p>
+
+<p>
+  <strong>Logfile:</strong>
+  <%= @result.logfile %>
+</p>
+
+<p>
+  <strong>Errfile:</strong>
+  <%= @result.errfile %>
+</p>
+
+<%= link_to 'Edit', edit_result_path(@result) %> |
+<%= link_to 'Back', results_path %>

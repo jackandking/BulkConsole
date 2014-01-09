@@ -1,0 +1,35 @@
+<h1>Listing results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Return</th>
+      <th>Stdout</th>
+      <th>Logfile</th>
+      <th>Errfile</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.task_id %></td>
+        <td><%= result.return %></td>
+        <td><%= result.stdout %></td>
+        <td><%= result.logfile %></td>
+        <td><%= result.errfile %></td>
+        <td><%= link_to 'Show', result %></td>
+        <td><%= link_to 'Edit', edit_result_path(result) %></td>
+        <td><%= link_to 'Destroy', result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Result', new_result_path %>

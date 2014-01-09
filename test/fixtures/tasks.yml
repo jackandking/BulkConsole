@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner: MyString
+  desc: MyString
+  tool_id: 1
+  configure_id: 
+  result_id: 1
+  state: MyString
+
+two:
+  owner: MyString
+  desc: MyString
+  tool_id: 1
+  configure_id: 
+  result_id: 1
+  state: MyString

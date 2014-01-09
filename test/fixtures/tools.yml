@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  desc: MyString
+  cmd: MyString
+  p1: MyString
+  p1_desc: MyString
+  p2: MyString
+  p2_desc: MyString
+  p3: MyString
+  p3_desc: MyString
+  p4: MyString
+  p4_desc: MyString
+
+two:
+  name: MyString
+  desc: MyString
+  cmd: MyString
+  p1: MyString
+  p1_desc: MyString
+  p2: MyString
+  p2_desc: MyString
+  p3: MyString
+  p3_desc: MyString
+  p4: MyString
+  p4_desc: MyString

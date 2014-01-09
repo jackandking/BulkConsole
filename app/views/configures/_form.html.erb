@@ -1,0 +1,53 @@
+<%= form_for(@configure) do |f| %>
+  <% if @configure.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@configure.errors.count, "error") %> prohibited this configure from being saved:</h2>
+
+      <ul>
+      <% @configure.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :task_id %><br>
+    <%= f.number_field :task_id %>
+  </div>
+  <div class="field">
+    <%= f.label :s1 %><br>
+    <%= f.text_field :s1 %>
+  </div>
+  <div class="field">
+    <%= f.label :s2 %><br>
+    <%= f.text_field :s2 %>
+  </div>
+  <div class="field">
+    <%= f.label :s3 %><br>
+    <%= f.text_field :s3 %>
+  </div>
+  <div class="field">
+    <%= f.label :s4 %><br>
+    <%= f.text_field :s4 %>
+  </div>
+  <div class="field">
+    <%= f.label :f1 %><br>
+    <%= f.text_field :f1 %>
+  </div>
+  <div class="field">
+    <%= f.label :f2 %><br>
+    <%= f.text_field :f2 %>
+  </div>
+  <div class="field">
+    <%= f.label :f3 %><br>
+    <%= f.text_field :f3 %>
+  </div>
+  <div class="field">
+    <%= f.label :f4 %><br>
+    <%= f.text_field :f4 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
