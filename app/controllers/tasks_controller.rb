@@ -48,14 +48,25 @@ class TasksController < ApplicationController
     p @cmd
     @cmd=eval("\""+@cmd+"\"")
     p @cmd
-    stdout= system(@cmd)
+    stdout = system(@cmd)
     @result=Result.new
     @result.task_id = @task.id
     @result.stdout= stdout
+    Configure.column_names.grep(/of\d/).each do |c|
+      of = eval("@task.configure."+c)
+      if of and !of.empty? 
+        if File.exist? of
+          eval("@result."+c+" = @task.configure."+c)
+        else
+          eval("@result."+c+" = 'Error: File Not Fould'")
+        end
+      end
+    end
     @result.save
     @task.result_id=@result.id
     if @task.save
-      format.html { redirect_to @result, notice: 'Task was successfully created.' }
+      render "results/show"
+      #render :controller => :results, :action => :show, :id => @result.id
     end
   end
 

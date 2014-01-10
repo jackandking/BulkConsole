@@ -14,6 +14,7 @@
   <div class="field">
     <%= f.label :owner %><br>
     <%= @task.owner %>
+    <%= f.hidden_field :owner, :value => @task.owner%>
   </div>
   <div class="field">
     <%= f.label :desc %><br>
