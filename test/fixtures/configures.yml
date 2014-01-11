@@ -1,15 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+test:
+  id: 1
   task_id: 1
-  s1: MyString
-  s2: MyString
-  s3: MyString
-  s4: MyString
-  if1: MyString
-  if2: MyString
-  if3: MyString
-  if4: MyString
+  s1: 'test'
+  of1: '/tmp/test'
 
 two:
   task_id: 1

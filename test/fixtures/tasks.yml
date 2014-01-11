@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+test:
+  id: 1
   owner: MyString
   desc: MyString
   tool_id: 1
-  configure_id: 
-  result_id: 1
-  state: MyString
+  configure_id: 1
+  state: 'created'
 
 two:
   owner: MyString

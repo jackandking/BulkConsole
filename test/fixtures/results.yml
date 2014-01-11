@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  task_id: 1
-  return: 1
-  stdout: MyString
-  of1: MyString
-  of2: MyString
-  of3: MyString
-  of4: MyString
-
-two:
-  task_id: 1
-  return: 1
-  stdout: MyString
-  of1: MyString
-  of2: MyString
-  of3: MyString
-  of4: MyString
+#one:
+#  task_id: 1
+#  return: 1
+#  stdout: MyString
+#  of1: MyString
+#  of2: MyString
+#  of3: MyString
+#  of4: MyString
+#
+#two:
+#  task_id: 1
+#  return: 1
+#  stdout: MyString
+#  of1: MyString
+#  of2: MyString
+#  of3: MyString
+#  of4: MyString

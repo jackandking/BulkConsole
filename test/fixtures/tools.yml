@@ -1,25 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+test:
+  id: 1
   name: MyString
   desc: MyString
-  cmd: MyString
-  p1: MyString
-  p1_desc: MyString
-  p2: MyString
-  p2_desc: MyString
-  p3: MyString
-  p3_desc: MyString
-  p4: MyString
-  p4_desc: MyString
-  o1: MyString
-  o1_desc: MyString
-  o2: MyString
-  o2_desc: MyString
-  o3: MyString
-  o3_desc: MyString
-  o4: MyString
-  o4_desc: MyString
+  cmd: 'date /t > /tmp/#{@s1}'
+  p1: 's1'
+  p1_desc: 'filename'
+  o1: 'of1'
+  o1_desc: 'logfile'
 
 two:
   name: MyString

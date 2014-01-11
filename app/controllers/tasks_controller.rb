@@ -46,12 +46,17 @@ class TasksController < ApplicationController
     p @if1
     @cmd = @task.tool.cmd
     p @cmd
+    begin
     @cmd=eval("\""+@cmd+"\"")
+    rescue NameError => e
+      logger.error e
+      @task.error = e
+    end
     logger.info @cmd
-    p "before execute"+@task.state
+    p "before execute "+@task.state
     @task.cmd=@cmd
     @task.e_execute
-    p "after execute"+@task.state
+    p "after execute "+@task.state
     now=Time.now.nsec
     stdout = "d:/log.#{now}"
     p stdout
