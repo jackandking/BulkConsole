@@ -18,7 +18,7 @@ class ConfiguresController < ApplicationController
     @configure.task_id = params[:task_id]
     Tool.column_names.grep(/[p|o]\d$/).each do |c|
       eval("@p = @configure.task.tool."+c)
-      if !@p.empty?
+      if @p and !@p.empty?
         eval("@"+@p+"_desc = @configure.task.tool."+c+"_desc")
       end 
     end
@@ -38,6 +38,7 @@ class ConfiguresController < ApplicationController
       if @configure.save
         @configure.task.configure_id = @configure.id
         if @configure.task.save
+          @configure.task.e_configure
           format.html { redirect_to @configure, notice: 'Configure was successfully created.' }
           format.json { render action: 'show', status: :created, location: @configure }
         else

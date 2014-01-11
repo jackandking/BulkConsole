@@ -47,11 +47,19 @@ class TasksController < ApplicationController
     @cmd = @task.tool.cmd
     p @cmd
     @cmd=eval("\""+@cmd+"\"")
-    p @cmd
-    stdout = system(@cmd)
+    logger.info @cmd
+    p "before execute"+@task.state
+    @task.cmd=@cmd
+    @task.e_execute
+    p "after execute"+@task.state
+    now=Time.now.nsec
+    stdout = "d:/log.#{now}"
+    p stdout
+    r = system(@cmd+" > #{stdout} 2>&1")
     @result=Result.new
     @result.task_id = @task.id
-    @result.stdout= stdout
+    @result.stdout= stdout #File.read(stdout)
+    @result.return= $?.exitstatus
     Configure.column_names.grep(/of\d/).each do |c|
       of = eval("@task.configure."+c)
       if of and !of.empty? 
