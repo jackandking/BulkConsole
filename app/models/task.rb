@@ -1,5 +1,4 @@
 class Task < ActiveRecord::Base
-  attr_accessor :cmd, :mydir, :logfile
   @@work_dir = "d:/bulkconsole/"
   @@timeout = 60*30
 
@@ -15,14 +14,14 @@ class Task < ActiveRecord::Base
   state_machine :state, :initial => :created do
 
     before_transition :created => :configured do |task, transition|
-      @mydir = @@work_dir + "#{task.id}/"
-      if File.exist?(@mydir)
-        raise "#{@mydir} already exist, something wrong"
+      mydir = @@work_dir + "#{task.id}/"
+      if File.exist?(mydir)
+        p "#{mydir} already exist, something wrong"
+        #raise "#{mydir} already exist, something wrong"
       else
-        Dir.mkdir(@mydir) 
+        Dir.mkdir(mydir) 
       end
-      task.logger.debug "task dir: #{@mydir}"
-      task.mydir = @mydir
+      task.logger.debug "task dir: #{mydir}"
     end
 
     before_transition :configured => :executing do |task, transition|
@@ -35,7 +34,7 @@ class Task < ActiveRecord::Base
       end
       cmd = task.tool.cmd
       begin
-        cmd=eval("\""+cmd+"\"")
+        cmd = eval("\""+cmd+"\"")
       rescue NameError => e
         task.logger.error e
         task.error = e
@@ -47,11 +46,13 @@ class Task < ActiveRecord::Base
     after_transition :configured => :executing do |task, transition|
       task.e_execute
     end
+
     before_transition :executing=> :executed do |task, transition|
-      now = Time.now.nsec
-      logfile = task.mydir + "log.#{now}"
+      mydir = @@work_dir + "#{task.id}/"
+      now = Time.now.to_f
+      logfile = mydir + "log.#{now}"
       task.logger.debug "logfile: " + logfile
-      task.logfile = logfile
+
       ret = 0
       begin
         timeout(@@timeout) do

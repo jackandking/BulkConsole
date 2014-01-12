@@ -4,6 +4,7 @@ class CreateResults < ActiveRecord::Migration
       t.integer :task_id
       t.integer :return
       t.string :stdout
+      t.integer :runtime
       t.string :of1
       t.string :of2
       t.string :of3

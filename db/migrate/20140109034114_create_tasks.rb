@@ -4,6 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :owner
       t.string :desc
       t.integer :tool_id
+      t.string :cmd
       t.integer :configure_id
       t.integer :result_id
       t.string :state
