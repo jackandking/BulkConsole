@@ -6,14 +6,10 @@ class Task < ActiveRecord::Base
   has_one :configure
   has_one :result
 
-  def initialize
-    Dir.mkdir(@@work_dir) unless File.exist?(@@work_dir)
-    super()
-  end
-
   state_machine :state, :initial => :created do
 
     before_transition :created => :configured do |task, transition|
+      Dir.mkdir(@@work_dir) unless File.exist?(@@work_dir)
       mydir = @@work_dir + "#{task.id}/"
       if File.exist?(mydir)
         p "#{mydir} already exist, something wrong"
