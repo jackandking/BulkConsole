@@ -39,47 +39,14 @@ class TasksController < ApplicationController
   end
 
   def execute
-    Configure.column_names.grep(/[s|if]\d/).each do |c|
-      eval("@"+c+" = @task.configure."+c)
-    end
-    p @s1
-    p @if1
-    @cmd = @task.tool.cmd
-    p @cmd
-    begin
-    @cmd=eval("\""+@cmd+"\"")
-    rescue NameError => e
-      logger.error e
-      @task.error = e
-    end
-    logger.info @cmd
-    p "before execute "+@task.state
-    @task.cmd=@cmd
-    @task.e_execute
-    p "after execute "+@task.state
-    now=Time.now.nsec
-    stdout = "d:/log.#{now}"
-    p stdout
-    r = system(@cmd+" > #{stdout} 2>&1")
-    @result=Result.new
-    @result.task_id = @task.id
-    @result.stdout= stdout #File.read(stdout)
-    @result.return= $?.exitstatus
-    Configure.column_names.grep(/of\d/).each do |c|
-      of = eval("@task.configure."+c)
-      if of and !of.empty? 
-        if File.exist? of
-          eval("@result."+c+" = @task.configure."+c)
-        else
-          eval("@result."+c+" = 'Error: File Not Fould'")
-        end
-      end
-    end
-    @result.save
-    @task.result_id=@result.id
+    logger.debug "before execute " + @task.state
+    @task.e_execute!
+    logger.debug "after execute " + @task.state
     if @task.save
+      @result = @task.result
       render "results/show"
-      #render :controller => :results, :action => :show, :id => @result.id
+    else
+      raise "execute failed!"
     end
   end
 
